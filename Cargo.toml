@@ -3,6 +3,7 @@ name = "numero-por-extenso"
 version = "0.1.0"
 authors = ["André Lins <andrelucas01@hotmail.com>"]
 edition = "2018"
+license = "MIT"
 description = "Biblioteca Rust para conversão por extenso de valores numéricos."
 keywords = ["numero", "extenso", "portugues"]
 repository = "https://github.com/andrelmlins/numero-por-extenso"
