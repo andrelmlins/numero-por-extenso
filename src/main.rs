@@ -18,7 +18,7 @@ fn numero_por_extenso<T: Into<f64>>(_valor: T) -> String {
 
     let quantidade_centena = ((_inteiro.len() as f32) / 3.0).round() as i32;
     
-    for contador_centena in (1..quantidade_centena+1).rev() {
+    for contador_centena in (1..quantidade_centena+1) {
         println!("{}", contador_centena);
         // println!("{}", &_casas[contador_centena..contador_centena+1]);
         // println!("{}", &_inteiro[inicio..inicio+1]);
