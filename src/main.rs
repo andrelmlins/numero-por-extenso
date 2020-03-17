@@ -18,39 +18,48 @@ fn numero_por_extenso<T: Into<f64>>(_valor: T) -> String {
             .skip((contador_centena * 3) as usize)
             .take(3)
             .collect();
+        let tripla_numero: i32 = tripla.parse().unwrap();
         let unidades_centena: Vec<&str> = tripla.split("").collect();
 
         let centena = CENTENAS[unidades_centena[1].parse::<usize>().unwrap()];
         let dezena = DEZENAS[unidades_centena[2].parse::<usize>().unwrap()];
         let dezena_composta = DEZENAS_COMPOSTAS[unidades_centena[3].parse::<usize>().unwrap()];
-        let unidade = UNIDADES[unidades_centena[3].parse::<usize>().unwrap()];
+        let mut unidade = UNIDADES[unidades_centena[3].parse::<usize>().unwrap()];
         let casa = CASAS[(quantidade_centena - contador_centena - 1) as usize];
+        let casa_plural = CASAS_PLURAL[(quantidade_centena - contador_centena - 1) as usize];
+
+        if tripla_numero == 1 {
+            unidade = "";
+        }
 
         if centena != "" {
             string.push_str(centena);
+            string.push_str(" e ");
         }
 
         if dezena == "dez" {
-            string.push_str(" e ");
             string.push_str(dezena_composta);
         } else {
             if dezena != "" {
-                string.push_str(" e ");
                 string.push_str(dezena);
+                string.push_str(" e ");
             }
 
-            if casa == "mil" && unidade == "um" {
-                string.push_str("");
-            } else {
-                if unidade != "" {
-                    string.push_str(" e ");
-                    string.push_str(unidade);
-                }
+            if unidade != "" {
+                string.push_str(unidade);
             }
         }
 
-        string.push_str(casa);
-        string.push_str(" ");
+        if casa != "" && casa_plural != "" {
+            string.push_str(" ");
+
+            if tripla_numero > 1 {
+                string.push_str(casa_plural);
+            } else {
+                string.push_str(casa);
+            }
+            string.push_str(", ");
+        }
     }
 
     string
@@ -69,6 +78,7 @@ fn main() {
 }
 
 const CASAS: [&str; 6] = ["", "mil", "milhão", "bilhão", "trilhão", "quatrilhão"];
+const CASAS_PLURAL: [&str; 6] = ["", "mil", "milhões", "bilhões", "trilhões", "quatrilhões"];
 
 const CENTENAS: [&str; 10] = [
     "",
