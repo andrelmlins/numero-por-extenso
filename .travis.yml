@@ -8,12 +8,9 @@ matrix:
   allow_failures:
     - rust: nightly
 
-jobs:
-  include:
-    - stage: cargo release
-      deploy:
-        provider: cargo
-        token: "$API_TOKEN"
-        skip_cleanup: true
-        on:
-          tags: true
+deploy:
+  provider: cargo
+  token: "$AUTH_TOKEN"
+  skip_cleanup: true
+  on:
+    tags: true
