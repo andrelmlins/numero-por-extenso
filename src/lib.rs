@@ -74,6 +74,7 @@ fn normalizar(valor: String) -> String {
 }
 
 const CASAS: [&str; 6] = ["", "mil", "milhão", "bilhão", "trilhão", "quatrilhão"];
+
 const CASAS_PLURAL: [&str; 6] = ["", "mil", "milhões", "bilhões", "trilhões", "quatrilhões"];
 
 const CENTENAS: [&str; 10] = [
