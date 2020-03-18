@@ -2,7 +2,7 @@
 
 Biblioteca Rust para conversão por extenso de valores numéricos.
 
-[![Crates.io](https://img.shields.io/crates/v/numero-por-extenso)](https://crates.io/crates/numero-por-extenso) &bull; [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/andrelmlins/numero-por-extenso/blob/master/LICENSE) &bull; [![Build Status](https://travis-ci.com/andrelmlins/numero-por-extenso.svg?branch=master)](https://travis-ci.com/andrelmlins/numero-por-extenso)
+[![Crates.io](https://img.shields.io/crates/v/numero-por-extenso)](https://crates.io/crates/numero-por-extenso) &bull; [![Crates.io](https://img.shields.io/crates/l/numero-por-extenso)](https://github.com/andrelmlins/numero-por-extenso/blob/master/LICENSE) &bull; [![Build Status](https://travis-ci.com/andrelmlins/numero-por-extenso.svg?branch=master)](https://travis-ci.com/andrelmlins/numero-por-extenso)
 
 ## Instalação
 
