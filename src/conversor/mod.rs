@@ -1,25 +1,15 @@
 mod constantes;
-mod helpers;
 
+use crate::tipo::Tipo;
 use constantes::*;
-use helpers::*;
 
-pub fn numero_por_extenso<T: Into<f64>>(_valor: T) -> String {
-    let mut string = String::new();
-    let _valor_string = _valor.into().to_string();
-    let _separar_decimal: Vec<&str> = _valor_string.split(".").collect();
+pub fn gerar_extenso(valor: String, tipo: Tipo) -> String {
+    let mut extenso = String::new();
 
-    let _inteiro = normalizar(String::from(_separar_decimal[0]));
-    let mut _decimal = String::from("");
-
-    if _separar_decimal.len() > 1 {
-        _decimal = String::from(_separar_decimal[1]);
-    }
-
-    let quantidade_centena = ((_inteiro.len() as f32) / 3.0).round() as i32;
+    let quantidade_centena = ((valor.len() as f32) / 3.0).round() as i32;
 
     for contador_centena in 0..quantidade_centena {
-        let tripla: String = _inteiro
+        let tripla: String = valor
             .chars()
             .skip((contador_centena * 3) as usize)
             .take(3)
@@ -27,7 +17,7 @@ pub fn numero_por_extenso<T: Into<f64>>(_valor: T) -> String {
         let tripla_numero: i32 = tripla.parse().unwrap();
         let unidades_centena: Vec<&str> = tripla.split("").collect();
 
-        let centena = CENTENAS[unidades_centena[1].parse::<usize>().unwrap()];
+        let mut centena = CENTENAS[unidades_centena[1].parse::<usize>().unwrap()];
         let dezena = DEZENAS[unidades_centena[2].parse::<usize>().unwrap()];
         let dezena_composta = DEZENAS_COMPOSTAS[unidades_centena[3].parse::<usize>().unwrap()];
         let mut unidade = UNIDADES[unidades_centena[3].parse::<usize>().unwrap()];
@@ -38,35 +28,43 @@ pub fn numero_por_extenso<T: Into<f64>>(_valor: T) -> String {
             unidade = "";
         }
 
+        if tripla_numero >= 100 && tripla_numero < 200 {
+            centena = "cento";
+        }
+
         if centena != "" {
-            string.push_str(centena);
-            string.push_str(" e ");
+            extenso.push_str(centena);
+            if unidade != "" || dezena != "" {
+                extenso.push_str(" e ");
+            }
         }
 
         if dezena == "dez" {
-            string.push_str(dezena_composta);
+            extenso.push_str(dezena_composta);
         } else {
             if dezena != "" {
-                string.push_str(dezena);
-                string.push_str(" e ");
+                extenso.push_str(dezena);
+                if unidade != "" {
+                    extenso.push_str(" e ");
+                }
             }
 
             if unidade != "" {
-                string.push_str(unidade);
+                extenso.push_str(unidade);
             }
         }
 
         if casa != "" && casa_plural != "" {
-            string.push_str(" ");
+            extenso.push_str(" ");
 
             if tripla_numero > 1 {
-                string.push_str(casa_plural);
+                extenso.push_str(casa_plural);
             } else {
-                string.push_str(casa);
+                extenso.push_str(casa);
             }
-            string.push_str(", ");
+            extenso.push_str(", ");
         }
     }
 
-    string
+    extenso
 }
