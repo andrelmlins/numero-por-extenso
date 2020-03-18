@@ -16,7 +16,7 @@ pub fn numero_por_extenso<T: Into<f64>>(_valor: T, _tipo: Tipo) -> String {
         _decimal = String::from(_separar_decimal[1]);
     }
 
-    let string = conversor::gerar_extenso(_inteiro, _tipo);
+    let string = conversor::gerar_extenso(_inteiro, _decimal, _tipo);
 
     string
 }

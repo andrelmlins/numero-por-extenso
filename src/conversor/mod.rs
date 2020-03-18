@@ -3,7 +3,30 @@ mod constantes;
 use crate::tipo::Tipo;
 use constantes::*;
 
-pub fn gerar_extenso(valor: String, tipo: Tipo) -> String {
+pub fn gerar_extenso(inteiro: String, decimal: String, tipo: Tipo) -> String {
+    let inteiroExtenso = extenso(inteiro);
+    let decimalExtenso = extenso(decimal);
+
+    match tipo {
+        Tipo::DECIMAL => decimal(inteiroExtenso, decimalExtenso),
+        Tipo::PORCENTAGEM => porcetagem(inteiroExtenso, decimalExtenso),
+        Tipo::MONETARIO => monetario(inteiroExtenso, decimalExtenso),
+    }
+}
+
+fn decimal(inteiro: String, decimal: String) -> String {
+    format!("{} ponto {}", inteiro, decimal)
+}
+
+fn porcetagem(inteiro: String, decimal: String) -> String {
+    format!("{} ponto {} por cento", inteiro, decimal)
+}
+
+fn monetario(inteiro: String, decimal: String) -> String {
+    format!("{} reais e {} centavos", inteiro, decimal)
+}
+
+fn extenso(valor: String) -> String {
     let mut extenso = String::new();
 
     let quantidade_centena = ((valor.len() as f32) / 3.0).round() as i32;
