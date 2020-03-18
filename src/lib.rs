@@ -13,14 +13,10 @@ pub fn numero_por_extenso<T: Into<f64>>(_valor: T, _tipo: Tipo) -> String {
     let mut _decimal = String::from("");
 
     if _separar_decimal.len() > 1 {
-        _decimal = String::from(_separar_decimal[1]);
+        _decimal = normalizar(String::from(_separar_decimal[1]));
     }
 
     let string = conversor::gerar_extenso(_inteiro, _decimal, _tipo);
 
     string
-}
-
-fn main() {
-    println!("{}", numero_por_extenso(226.40, Tipo::DECIMAL))
 }

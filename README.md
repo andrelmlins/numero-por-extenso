@@ -22,7 +22,7 @@ extern crate numero_por_extenso;
 
 use numero_por_extenso::*;
 
-println!("numero por extenso: {}", numero_por_extenso(123456));
+println!("numero por extenso: {}", numero_por_extenso(123456, Tipo::DECIMAL));
 ```
 
 ## Licença

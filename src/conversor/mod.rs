@@ -4,26 +4,38 @@ use crate::tipo::Tipo;
 use constantes::*;
 
 pub fn gerar_extenso(inteiro: String, decimal: String, tipo: Tipo) -> String {
-    let inteiroExtenso = extenso(inteiro);
-    let decimalExtenso = extenso(decimal);
+    let inteiro_extenso = extenso(inteiro);
+    let decimal_extenso = extenso(decimal);
 
     match tipo {
-        Tipo::DECIMAL => decimal(inteiroExtenso, decimalExtenso),
-        Tipo::PORCENTAGEM => porcetagem(inteiroExtenso, decimalExtenso),
-        Tipo::MONETARIO => monetario(inteiroExtenso, decimalExtenso),
+        Tipo::DECIMAL => mascara_decimal(inteiro_extenso, decimal_extenso),
+        Tipo::PORCENTAGEM => mascara_porcetagem(inteiro_extenso, decimal_extenso),
+        Tipo::MONETARIO => mascara_monetario(inteiro_extenso, decimal_extenso),
     }
 }
 
-fn decimal(inteiro: String, decimal: String) -> String {
-    format!("{} ponto {}", inteiro, decimal)
+fn mascara_decimal(inteiro: String, decimal: String) -> String {
+    if decimal != "" {
+        format!("{} ponto {}", inteiro, decimal)
+    } else {
+        inteiro
+    }
 }
 
-fn porcetagem(inteiro: String, decimal: String) -> String {
-    format!("{} ponto {} por cento", inteiro, decimal)
+fn mascara_porcetagem(inteiro: String, decimal: String) -> String {
+    if decimal != "" {
+        format!("{} ponto {} por cento", inteiro, decimal)
+    } else {
+        format!("{} por cento", inteiro)
+    }
 }
 
-fn monetario(inteiro: String, decimal: String) -> String {
-    format!("{} reais e {} centavos", inteiro, decimal)
+fn mascara_monetario(inteiro: String, decimal: String) -> String {
+    if decimal != "" {
+        format!("{} reais e {} centavos", inteiro, decimal)
+    } else {
+        format!("{} reais", inteiro)
+    }
 }
 
 fn extenso(valor: String) -> String {
