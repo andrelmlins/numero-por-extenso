@@ -1,3 +1,7 @@
+mod constantes;
+
+use crate::constantes::*;
+
 pub fn numero_por_extenso<T: Into<f64>>(_valor: T) -> String {
     let mut string = String::new();
     let _valor_string = _valor.into().to_string();
@@ -72,48 +76,3 @@ fn normalizar(valor: String) -> String {
         normalizar(format!("{}{}", String::from("0"), valor))
     }
 }
-
-const CASAS: [&str; 6] = ["", "mil", "milhão", "bilhão", "trilhão", "quatrilhão"];
-
-const CASAS_PLURAL: [&str; 6] = ["", "mil", "milhões", "bilhões", "trilhões", "quatrilhões"];
-
-const CENTENAS: [&str; 10] = [
-    "",
-    "cem",
-    "duzentos",
-    "trezentos",
-    "quatrocentos",
-    "quinhentos",
-    "seiscentos",
-    "setecentos",
-    "oitocentos",
-    "novecentos",
-];
-
-const DEZENAS: [&str; 10] = [
-    "",
-    "dez",
-    "vinte",
-    "trinta",
-    "quarenta",
-    "cinquenta",
-    "sessenta",
-    "setenta",
-    "oitenta",
-    "noventa",
-];
-const DEZENAS_COMPOSTAS: [&str; 10] = [
-    "dez",
-    "onze",
-    "doze",
-    "treze",
-    "quatorze",
-    "quinze",
-    "dezesseis",
-    "dezesete",
-    "dezoito",
-    "dezenove",
-];
-const UNIDADES: [&str; 10] = [
-    "", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove",
-];
