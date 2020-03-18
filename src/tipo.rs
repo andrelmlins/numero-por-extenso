@@ -1,4 +1,4 @@
-pub enum Tipo {
+pub enum TipoExtenso {
     DECIMAL,
     MONETARIO,
     PORCENTAGEM,

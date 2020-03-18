@@ -1,16 +1,16 @@
 mod constantes;
 
-use crate::tipo::Tipo;
+use crate::tipo::TipoExtenso;
 use constantes::*;
 
-pub fn gerar_extenso(inteiro: String, decimal: String, tipo: Tipo) -> String {
+pub fn gerar_extenso(inteiro: String, decimal: String, tipo: TipoExtenso) -> String {
     let inteiro_extenso = extenso(inteiro);
     let decimal_extenso = extenso(decimal);
 
     match tipo {
-        Tipo::DECIMAL => mascara_decimal(inteiro_extenso, decimal_extenso),
-        Tipo::PORCENTAGEM => mascara_porcetagem(inteiro_extenso, decimal_extenso),
-        Tipo::MONETARIO => mascara_monetario(inteiro_extenso, decimal_extenso),
+        TipoExtenso::DECIMAL => mascara_decimal(inteiro_extenso, decimal_extenso),
+        TipoExtenso::PORCENTAGEM => mascara_porcetagem(inteiro_extenso, decimal_extenso),
+        TipoExtenso::MONETARIO => mascara_monetario(inteiro_extenso, decimal_extenso),
     }
 }
 
