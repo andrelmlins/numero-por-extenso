@@ -1,6 +1,8 @@
 mod constantes;
+mod helpers;
 
-use crate::constantes::*;
+use constantes::*;
+use helpers::*;
 
 pub fn numero_por_extenso<T: Into<f64>>(_valor: T) -> String {
     let mut string = String::new();
@@ -67,12 +69,4 @@ pub fn numero_por_extenso<T: Into<f64>>(_valor: T) -> String {
     }
 
     string
-}
-
-fn normalizar(valor: String) -> String {
-    if valor.len() % 3 == 0 {
-        valor.to_string()
-    } else {
-        normalizar(format!("{}{}", String::from("0"), valor))
-    }
 }

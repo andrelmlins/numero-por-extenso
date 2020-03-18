@@ -1,4 +1,4 @@
-# Numero por Extenso
+# Número por Extenso
 
 Biblioteca Rust para conversão por extenso de valores numéricos.
 
@@ -18,9 +18,9 @@ numero-por-extenso = "0.1.0"
 Abaixo uma forma simples de como utilizar essa biblioteca:
 
 ```rust
-extern crate numero-por-extenso;
+extern crate numero_por_extenso;
 
-use numero-por-extenso::numero_por_extenso;
+use numero_por_extenso::*;
 
 println!("numero por extenso: {}", numero_por_extenso(123456));
 ```
