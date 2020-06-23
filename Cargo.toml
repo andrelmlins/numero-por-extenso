@@ -6,6 +6,7 @@ edition = "2018"
 license = "MIT"
 readme = "README.md"
 description = "Biblioteca Rust para conversão por extenso de valores numéricos."
+documentation = "https://docs.rs/numero-por-extenso"
 keywords = ["numero", "extenso", "portugues"]
 repository = "https://github.com/andrelmlins/numero-por-extenso"
 
