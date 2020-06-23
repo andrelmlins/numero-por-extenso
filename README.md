@@ -6,11 +6,11 @@ Biblioteca Rust para conversão por extenso de valores numéricos.
 
 ## Instalação
 
-Adicione isso no seu `Cargo.toml`:
+Adicione essa dependência no seu `Cargo.toml`:
 
 ```toml
 [dependencies]
-numero-por-extenso = "0.1.0"
+numero-por-extenso = "0.3.1"
 ```
 
 ## Uso básico
